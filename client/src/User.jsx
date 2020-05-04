@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable react/prop-types */
 import React, { useLayoutEffect, useState } from 'react';
 import Axios from 'axios';
