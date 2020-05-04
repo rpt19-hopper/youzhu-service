@@ -1,3 +1,10 @@
+/* eslint-disable react/button-has-type */
+/* eslint-disable jsx-a11y/alt-text */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable spaced-comment */
+/* eslint-disable import/no-extraneous-dependencies */
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/self-closing-comp */
 /* eslint-disable import/extensions */
 /* eslint-disable import/no-named-as-default */
@@ -11,7 +18,7 @@ import './css/ProductReviews.scss';
 
 
 const ProductReviews = (props) => {
-  const server = 'http://ec2-13-59-182-191.us-east-2.compute.amazonaws.com:1234';
+  const server = 'http://localhost:1234';
   const [storeReviews, setStoreReviews] = useState([]);
   const [productReviews, setProductReviews] = useState([]);
   const [reviews, setReviews] = useState([]);
@@ -38,18 +45,18 @@ const ProductReviews = (props) => {
   };
 
   const getProductImage = (productId) => {
-    axios.get(`http://ec2-50-18-28-6.us-west-1.compute.amazonaws.com:8000/mainImage/${productId}`)
-      .then((res) => {
-        setMainImage(res.data)
-      });
+    // axios.get(`http://ec2-50-18-28-6.us-west-1.compute.amazonaws.com:8000/mainImage/${productId}`)
+    //   .then((res) => {
+    setMainImage('https://picsum.photos/200/300');
+    //});
   };
 
   const getProductInfo = (productId) => {
     axios.get(`http://ec2-18-144-174-63.us-west-1.compute.amazonaws.com:9000/products/${productId}`)
       .then((res) => {
-        setProductName(res.data.productName)
+        setProductName(res.data.productName);
       });
-  }
+  };
 
   const getStoreReviewsAverage = (productId) => {
     axios.get(`${server}/store/reviews/${productId}/average`)
@@ -135,7 +142,8 @@ const ProductReviews = (props) => {
                 <div className="text">{val.text}</div>
                 <div className="main-image-container">
                   <p>Purchased Item:</p>
-                  <img src={mainImage} /><span className="wt-text wt-text-gray">{productName}</span>
+                  <img src={mainImage} />
+                  <span className="wt-text wt-text-gray">{productName}</span>
                 </div>
               </div>
             </div>
@@ -144,7 +152,7 @@ const ProductReviews = (props) => {
       </div>
       <div className="wt-text-center see-more-reviews">
         <button className="wt-btn wt-btn--transparent">
-            <span>See more reviews</span>
+          <span>See more reviews</span>
         </button>
       </div>
     </div>
