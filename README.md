@@ -44,3 +44,39 @@ npm install
 // port numbers
 // endpoints
 
+## Etsy Store Reviews API
+API for creating, reading, updating, and deleting etsy store reviews 
+
+1. Create (POST)
+- Route: '/store/review'
+- Request body: 
+```
+{
+    "storeId": "1",
+    "userId": "1",
+    "text": "very very good",
+    "starRating": "4.9"
+}
+
+```
+2.  Read (GET)
+- Route: '/store/review/:id'
+- Request body: none
+- Request body: 
+```
+{
+    "id": "1006",
+    "storeId": "1",
+    "userId": "1",
+    "text": "very very good",
+    "starRating": "4.9"
+}
+
+```
+3.  Update (PUT)
+- Route: '/store/review'
+
+4.  Delete (DELETE)
+- Route: '/store/review/:id'
+- Request body: none
+
