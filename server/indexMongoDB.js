@@ -20,7 +20,7 @@ app.use(compression());
 
 app.get('/store/review/:id', (req, res) => {
   const { id } = req.params;
-  db.getOneStoreReviewMongo(id, (result, error) => {
+  db.getOneStoreReviewMongo(id, (error, result) => {
     if (error) {
       res.sendStatus(500);
     } else {
@@ -33,7 +33,7 @@ app.post('/store/review', (req, res) => {
   const {
     text, starRating, userId, storeId,
   } = req.body;
-  db.addOneStoreReviewMongo(storeId, userId, text, starRating, (result, error) => {
+  db.addOneStoreReviewMongo(storeId, userId, text, starRating, (error, result) => {
     if (error) {
       res.sendStatus(500);
     } else {
@@ -46,7 +46,7 @@ app.put('/store/review', (req, res) => {
   const {
     id, text, starRating, userId, storeId,
   } = req.body;
-  db.editOneStoreReviewMongo(id, text, starRating, userId, storeId, (result, error) => {
+  db.editOneStoreReviewMongo(id, text, starRating, userId, storeId, (error, result) => {
     if (error) {
       res.sendStatus(500);
     } else {
@@ -57,7 +57,7 @@ app.put('/store/review', (req, res) => {
 
 app.delete('/store/review/:id', (req, res) => {
   const { id } = req.params;
-  db.deleteOneStoreReviewMongo(id, (result, error) => {
+  db.deleteOneStoreReviewMongo(id, (error, result) => {
     if (error) {
       res.sendStatus(500);
     } else {
