@@ -22,7 +22,7 @@ CREATE TABLE stores (
 DROP TABLE IF EXISTS `product_reviews`;
 CREATE TABLE product_reviews (
     id int NOT NULL AUTO_INCREMENT UNIQUE,
-  text varchar(250) NOT NULL,
+  text varchar(200) NOT NULL,
     ts TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     dt DATETIME DEFAULT CURRENT_TIMESTAMP,
     star_rating tinyint,
@@ -37,7 +37,7 @@ CREATE TABLE product_reviews (
 DROP TABLE IF EXISTS `store_reviews`;
 CREATE TABLE store_reviews (
 	id int NOT NULL AUTO_INCREMENT UNIQUE,
-	text varchar(250) NOT NULL,
+	text varchar(200) NOT NULL,
 	star_rating tinyint,
 	user_id int NOT NULL,
 --   FOREIGN KEY (user_id) REFERENCES users(id),

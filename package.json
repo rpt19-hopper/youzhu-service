@@ -11,6 +11,7 @@
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage --colors",
     "start": "nodemon --exec babel-node server/index.js",
+    "start-mongo": "nodemon server/indexMongoDB.js",
     "prod:react": "webpack --open --config webpack.config.js",
     "dev:react": "webpack -d --watch",
     "seed": "mysql -u root -p < schema.sql"
@@ -64,6 +65,7 @@
     "jquery": "^3.4.1",
     "lorem-ipsum": "^2.0.3",
     "moment": "^2.24.0",
+    "mongoose": "^5.9.15",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
