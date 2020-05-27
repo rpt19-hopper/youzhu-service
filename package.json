@@ -11,7 +11,6 @@
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage --colors",
     "start": "nodemon --exec babel-node server/index.js",
-    "start-mongo": "nodemon server/indexMongoDB.js",
     "prod:react": "webpack --open --config webpack.config.js",
     "dev:react": "webpack -d --watch",
     "seed": "mysql -u root -p < schema.sql"

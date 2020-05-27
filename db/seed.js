@@ -115,8 +115,8 @@ const writeStoreReviews = fs.createWriteStream('./db/data/storeReview.csv');
 writeStoreReviews.write('id, text, star_rating, user_id, store_id \n', 'utf8');
 
 function writeSeventyMillionStoreReviews(writer, encoding, callback) {
-  let i = 10000000;
-  let id = 40000000;
+  let i = 50000000;
+  let id = 0;
   function write() {
     let ok = true;
     do {
