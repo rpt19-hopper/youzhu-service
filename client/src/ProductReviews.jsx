@@ -53,10 +53,12 @@ const ProductReviews = (props) => {
   };
 
   const getProductInfo = (productId) => {
-    axios.get(`http://ec2-18-144-174-63.us-west-1.compute.amazonaws.com:9000/products/${productId}`)
-      .then((res) => {
-        setProductName(res.data.productName);
-      });
+    //uncomment after api is available
+    // axios.get(`http://ec2-18-144-174-63.us-west-1.compute.amazonaws.com:9000/products/${productId}`)
+    //   .then((res) => {
+    //     setProductName(res.data.productName);
+    //   });
+    setProductName('fill product name');
   };
 
   const getStoreReviewsAverage = (productId) => {

@@ -13,7 +13,8 @@
     "start": "nodemon --exec babel-node server/index.js",
     "prod:react": "webpack --open --config webpack.config.js",
     "dev:react": "webpack -d --watch",
-    "seed": "mysql -u root -p < schema.sql"
+    "seed": "mysql -u root -p < schema.sql",
+    "seedMysql": "node db/seedMysqlStoreReviews.js & node db/seedMysqlProductReviews.js"
   },
   "jest": {
     "transform": {
@@ -65,6 +66,7 @@
     "lorem-ipsum": "^2.0.3",
     "moment": "^2.24.0",
     "mongoose": "^5.9.15",
+    "newrelic": "^6.8.0",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
