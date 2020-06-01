@@ -14,9 +14,21 @@ config:
     headers:
       x-my-service-auth: '987401838271002188298567'
 scenarios:
-  - flow:
-    - function: 'getListingId'
-    - get:
-        url: "/listing/{{ id }}"
+  # - name: 'GET listingInfo'
+  #   flow:
+  #   - function: 'artilleryContext'
+  #   - get:
+  #       url: "/listing/{{ id }}"
 
+  - name: 'PUT listingInfo'
+    flow:
+      - function: 'artilleryContext'
+      - put:
+          url: '/store/review'
+          json:
+            id: "{{ id }}"
+            storeId: "{{ storeId }}"
+            userId: "{{ userId }}"
+            text: "{{ text }}"
+            starRating: "{{ starRating }}"
 
