@@ -27,10 +27,10 @@ CREATE TABLE product_reviews (
     dt DATETIME DEFAULT CURRENT_TIMESTAMP,
     star_rating tinyint,
     user_id int NOT NULL,
---   FOREIGN KEY (user_id) REFERENCES users(id),
+  FOREIGN KEY (user_id) REFERENCES users(id),
     product_id int NOT NULL,
     store_id int NOT NULL,
---   FOREIGN KEY (store_id) REFERENCES stores(id),
+  FOREIGN KEY (store_id) REFERENCES stores(id),
     PRIMARY KEY (id)
 );
 
@@ -40,9 +40,9 @@ CREATE TABLE store_reviews (
 	text varchar(200) NOT NULL,
 	star_rating tinyint,
 	user_id int NOT NULL,
---   FOREIGN KEY (user_id) REFERENCES users(id),
+   FOREIGN KEY (user_id) REFERENCES users(id),
 	store_id int NOT NULL,
---   FOREIGN KEY (store_id) REFERENCES stores(id),
+   FOREIGN KEY (store_id) REFERENCES stores(id),
 	PRIMARY KEY (id)
 );
 

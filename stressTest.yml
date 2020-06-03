@@ -1,0 +1,34 @@
+config:
+  target: 'http://localhost:1234'
+  processor: './stressTestHelper.js'
+  phases:
+    - duration: 60
+      arrivalRate: 1000
+    - duration: 60
+      arrivalRate: 100
+    - duration: 60
+      arrivalRate: 10
+    - duration: 60
+      arrivalRate: 1
+  defaults:
+    headers:
+      x-my-service-auth: '987401838271002188298567'
+scenarios:
+  # - name: 'GET listingInfo'
+  #   flow:
+  #   - function: 'artilleryContext'
+  #   - get:
+  #       url: "/listing/{{ id }}"
+
+  - name: 'PUT listingInfo'
+    flow:
+      - function: 'artilleryContext'
+      - put:
+          url: '/store/review'
+          json:
+            id: "{{ id }}"
+            storeId: "{{ storeId }}"
+            userId: "{{ userId }}"
+            text: "{{ text }}"
+            starRating: "{{ starRating }}"
+
