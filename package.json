@@ -13,8 +13,7 @@
     "start": "nodemon --exec babel-node server/index.js",
     "prod:react": "webpack --open --config webpack.config.js",
     "dev:react": "webpack -d --watch",
-    "seed": "mysql -u root -p < schema.sql",
-    "seedMysql": "node db/seedMysqlStoreReviews.js & node db/seedMysqlProductReviews.js"
+    "seed": "mysql -u root -p < schema.sql"
   },
   "jest": {
     "transform": {
