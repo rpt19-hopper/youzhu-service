@@ -19,7 +19,7 @@ app.use(cors());
 app.use(compression());
 
 app.get('/', (req, res) => {
-  console.log('connect');
+  res.send('connected');
 });
 
 
