@@ -18,8 +18,12 @@ app.use(express.static(`${__dirname}/../client/dist/`));
 app.use(cors());
 app.use(compression());
 
+app.use(function(req, res){
+  res.send(404);
+});
+
 app.get('/', (req, res) => {
-  res.send('connected');
+  res.send('connected').status(200);
 });
 
 
