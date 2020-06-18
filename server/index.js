@@ -17,6 +17,12 @@ app.use(express.static(`${__dirname}/../client/dist/`));
 
 app.use(cors());
 app.use(compression());
+
+app.get('/', (req, res) => {
+  console.log('connect');
+});
+
+
 app.get('/listing/:productNumber', (req, res) => {
   res.sendFile('index.html', {
     root: `${__dirname}/../client/dist/`,
