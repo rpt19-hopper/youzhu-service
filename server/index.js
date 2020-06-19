@@ -22,6 +22,12 @@ app.get('/', (req, res) => {
   res.send('connected').status(200);
 });
 
+app.get('/loaderio-fcf286881d57108ba58779565bbe05e9', (req, res) => {
+  res.sendFile('loaderio-fcf286881d57108ba58779565bbe05e9.txt', {
+    root: `${__dirname}/../`,
+  });
+});
+
 
 app.get('/listing/:productNumber', (req, res) => {
   res.sendFile('index.html', {
