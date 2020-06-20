@@ -7,7 +7,7 @@ connection.connect();
 
 
 const getProductReviews = function (productId, callback) {
-  connection.query(`SELECT * FROM product_reviews WHERE product_id=${productId}`, (error, results) => {
+  connection.query(`SELECT * FROM product_reviews_and_users_and_stores WHERE product_id=${productId}`, (error, results) => {
     if (error) {
       callback(null, error);
     } else {
@@ -17,7 +17,7 @@ const getProductReviews = function (productId, callback) {
 };
 
 const getProductReviewsAverage = function (productId, callback) {
-  connection.query(`SELECT product_id, AVG(star_rating) FROM product_reviews WHERE product_id=${productId}`, (error, results) => {
+  connection.query(`SELECT product_id, AVG(star_rating) FROM product_reviews_and_users_and_stores WHERE product_id=${productId}`, (error, results) => {
     if (error) {
       callback(null, error);
     } else {
@@ -27,7 +27,7 @@ const getProductReviewsAverage = function (productId, callback) {
 };
 
 const getStoreReviewsAverage = function (storeId, callback) {
-  connection.query(`SELECT store_id, AVG(star_rating) FROM store_reviews WHERE store_id=${storeId}`, (error, results) => {
+  connection.query(`SELECT store_id, AVG(star_rating) FROM product_reviews_and_users_and_stores WHERE store_id=${storeId}`, (error, results) => {
     if (error) {
       callback(null, error);
     } else {
@@ -37,7 +37,7 @@ const getStoreReviewsAverage = function (storeId, callback) {
 };
 
 const getStoreReviews = function (storeId, callback) {
-  connection.query(`SELECT * FROM store_reviews WHERE store_id=${storeId}`, (error, results) => {
+  connection.query(`SELECT * FROM store_reviews_and_users_and_stores WHERE store_id=${storeId}`, (error, results) => {
     if (error) {
       callback(null, error);
     } else {
@@ -57,7 +57,7 @@ const getUser = function (userId, callback) {
 };
 
 const getOneStoreReview = function (id, callback) {
-  connection.query(`SELECT * FROM store_reviews WHERE id=${id}`, (error, results) => {
+  connection.query(`SELECT * FROM store_reviews_and_users_and_stores WHERE store_id=${id}`, (error, results) => {
     if (error) {
       callback(null, error);
     } else {

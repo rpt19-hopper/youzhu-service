@@ -13,8 +13,7 @@
     "start": "nodemon --exec babel-node server/index.js",
     "prod:react": "webpack --open --config webpack.config.js",
     "dev:react": "webpack -d --watch",
-    "seed": "mysql -u root -p < schema.sql",
-    "seedMysql": "node db/seedMysqlStoreReviews.js & node db/seedMysqlProductReviews.js"
+    "seed": "mysql -u root -p < schema.sql"
   },
   "jest": {
     "transform": {
@@ -24,7 +23,7 @@
   "dependencies": {
     "body-parser": "^1.19.0",
     "compression": "^1.7.4",
-    "core-js": "^3.6.4",
+    "core-js": "^3.6.5",
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "mysql": "^2.18.1",
@@ -41,6 +40,7 @@
     "babel-core": "^6.26.3",
     "babel-jest": "^25.2.6",
     "babel-loader": "^8.1.0",
+    "babel-node": "0.0.1-security",
     "babel-polyfill": "^6.0.16",
     "babel-preset-es2015": "^6.0.15",
     "babel-preset-react": "^6.24.1",
@@ -67,6 +67,7 @@
     "moment": "^2.24.0",
     "mongoose": "^5.9.15",
     "newrelic": "^6.8.0",
+    "nodemon": "^2.0.4",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",

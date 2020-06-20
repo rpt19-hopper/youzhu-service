@@ -46,6 +46,44 @@ CREATE TABLE store_reviews (
 	PRIMARY KEY (id)
 );
 
+-- create a TABLE based on three tables for store reviews
+DROP VIEW IF EXISTS `product_reviews_and_users_and_stores`
+CREATE VIEW product_reviews_and_users_and_stores AS
+SELECT 
+  pr.id,
+  pr.ts,
+  pr.dt,
+  pr.star_rating,
+  pr.user_id,
+  pr.product_id,
+  pr.store_id,
+  u.username,
+  u.avatar,
+  s.name
+FROM product_reviews AS pr
+INNER JOIN users AS u
+ON pr.user_id = u.id
+INNER JOIN stores AS s 
+ON pr.store_id = s.id;
+
+-- create a table based on three tables for product reviews
+DROP VIEW IF EXISTS `store_reviews_and_users_and_stores`
+CREATE VIEW store_reviews_and_users_and_stores AS 
+SELECT 
+  sr.id,
+  sr.star_rating,
+  sr.user_id,
+  sr.store_id,
+  u.username,
+  u.avatar,
+  s.name
+FROM store_reviews AS sr
+INNER JOIN users AS u
+ON sr.user_id = u.id
+INNER JOIN stores AS s 
+ON sr.store_id = s.id;
+
+CREATE INDEX product_reviews_index ON product_reviews (product_id);
 
 
 -- INSERT INTO `users` VALUES ('1','http://lorempixel.com/75/75/','toy.carmel'),
@@ -252,7 +290,7 @@ CREATE TABLE store_reviews (
 -- ('100','aut');
 
 -- INSERT INTO `store_reviews` VALUES ('1','Assumenda et asperiores debitis sed optio. Quia autem quae temporibus consectetur eveniet. Ut ab enim qui est ea placeat. In et nisi quam eos non quid','2','14','62'),
--- ('2','Quo qui id asperiores hic optio repellendus deleniti. Cumque eius rerum consequuntur aliquid cumque. Animi repellendus quam libero officia ea.','0','24','59'),
+-- ('2','Quo qui id asperiores hic optio repellendus deleniti. Cumque eius rerum consequuntur aliquid cumque. Animi repellendus quam libero officia ea.','0','24','12'),
 -- ('3','Aliquam dolorum consectetur similique voluptas. Numquam maiores in veritatis sit.\nEst consequatur alias natus modi velit ipsam. Beatae autem vel bland','5','31','98'),
 -- ('4','Distinctio tenetur officia eum sequi nihil est et. Natus nemo quae iste similique commodi.','1','29','36'),
 -- ('5','Consequuntur reprehenderit pariatur aut quia voluptatibus tempore. Eius vitae temporibus impedit id. Architecto fuga earum est qui eum blanditiis. Sed','1','100','35'),
@@ -1255,7 +1293,7 @@ CREATE TABLE store_reviews (
 -- ('1002','My nephew loves it!','5','6','59'),
 -- ('1003','This was purchased as a gift and was a huge hit! Beautiful illustrations and so much detail into each entry! Quick shipping and quick response from the seller on questions. Would definitely buy again :)','5','19','59');
 
--- INSERT INTO `product_reviews` VALUES ('1','Sequi maxime voluptas sint recusandae quaerat accusantium id. Vel fugit aut numquam quos illo qui aut. Sequi nulla maxime eveniet quod. Soluta ut omni','2000-06-06 22:00:11','1974-01-30 17:21:31','0','15','12'),
+-- INSERT INTO `product_reviews` VALUES ('1','Sequi maxime voluptas sint recusandae quaerat accusantium id. Vel fugit aut numquam quos illo qui aut. Sequi nulla maxime eveniet quod. Soluta ut omni','2000-06-06','1974-01-30','0','15','9001003','12'),
 -- ('2','Omnis tempora accusamus quidem et dolorum. Sint omnis aut in molestiae. Pariatur maiores quos deleniti velit.','1990-03-03 16:16:08','2007-01-20 03:36:24','3','25','46'),
 -- ('3','Consectetur laudantium veniam eos ratione iste veniam. Delectus earum quo nostrum. Est dolorum consectetur quasi est autem voluptate.','2000-02-23 09:18:58','1997-09-30 18:38:05','3','8','91'),
 -- ('4','Quis at consectetur quasi quisquam et. Voluptatem laborum eaque est quis enim. Eum in ipsam aut laboriosam eum veritatis.','2013-11-08 13:11:41','1973-02-25 10:09:59','2','94','65'),
