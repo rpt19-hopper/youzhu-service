@@ -53,7 +53,7 @@ CREATE TABLE store_reviews (
 );
 
 -- create a TABLE based on three tables for store reviews
-DROP VIEW IF EXISTS `product_reviews_and_users_and_stores`
+DROP VIEW IF EXISTS `product_reviews_and_users_and_stores`;
 CREATE VIEW product_reviews_and_users_and_stores AS
 SELECT 
   pr.id,
@@ -61,6 +61,7 @@ SELECT
   pr.star_rating,
   pr.user_id,
   pr.product_id,
+  pr.text,
   u.username,
   u.avatar
 FROM product_reviews3 AS pr
@@ -69,13 +70,14 @@ ON pr.user_id = u.id;
 
 
 -- create a table based on three tables for product reviews
-DROP VIEW IF EXISTS `store_reviews_and_users_and_stores`
+DROP VIEW IF EXISTS `store_reviews_and_users_and_stores`;
 CREATE VIEW store_reviews_and_users_and_stores AS 
 SELECT 
   sr.id,
   sr.star_rating,
   sr.user_id,
   sr.store_id,
+  sr.text,
   u.username,
   u.avatar,
   s.name
@@ -85,11 +87,6 @@ ON sr.user_id = u.id
 INNER JOIN stores AS s 
 ON sr.store_id = s.id;
 
---create new store reivews table
-SELECT 
-  sp.id
-FROM store_products
-WHERE 
 
 CREATE INDEX product_reviews_index ON product_reviews (product_id);
 

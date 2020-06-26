@@ -4,7 +4,7 @@ import React, { useLayoutEffect, useState } from 'react';
 import Axios from 'axios';
 
 const User = (props) => {
-  const server = 'http://localhost:1234';
+  const server = 'http://18.223.151.174:1234';
   const [users, setUsers] = useState([]);
 
   // const getUser = (userId) => {
