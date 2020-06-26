@@ -67,44 +67,44 @@ const fs = require('fs');
 //   writeStores.end();
 // });
 
-// write store product relations csv
-const writeStoreProduct = fs.createWriteStream('./db/data/store_product.csv');
-writeStoreProduct.write('id, name\n', 'utf8');
+// // write store product relations csv
+// const writeStoreProduct = fs.createWriteStream('./db/data/store_product.csv');
+// writeStoreProduct.write('id, name\n', 'utf8');
 
-function writeTenMillionStoreProduct(writer, encoding, callback) {
-  let i = 10000000;
-  let id = 0;
-  function write() {
-    let ok = true;
-    do {
-      i -= 1;
-      id += 1;
-      const store_id = Math.ceil(Math.random() * 1000000);
-      const data = `${id},${store_id}\n`;
-      if (i === 0) {
-        writer.write(data, encoding, callback);
-      } else {
-        ok = writer.write(data, encoding);
-      }
-    } while (i > 0 && ok);
-    if (i > 0) {
-      writer.once('drain', write);
-    }
-  }
-  write();
-}
+// function writeTenMillionStoreProduct(writer, encoding, callback) {
+//   let i = 10000000;
+//   let id = 0;
+//   function write() {
+//     let ok = true;
+//     do {
+//       i -= 1;
+//       id += 1;
+//       const store_id = Math.ceil(Math.random() * 1000000);
+//       const data = `${id},${store_id}\n`;
+//       if (i === 0) {
+//         writer.write(data, encoding, callback);
+//       } else {
+//         ok = writer.write(data, encoding);
+//       }
+//     } while (i > 0 && ok);
+//     if (i > 0) {
+//       writer.once('drain', write);
+//     }
+//   }
+//   write();
+// }
 
-writeTenMillionStoreProduct(writeStoreProduct, 'utf-8', () => {
-  writeStoreProduct.end();
-});
+// writeTenMillionStoreProduct(writeStoreProduct, 'utf-8', () => {
+//   writeStoreProduct.end();
+// });
 
 // write productReview csv
-const writeProductReviews = fs.createWriteStream('./db/data/productReview.csv');
-writeProductReviews.write('id, text, ts, dt, star_rating, user_id, product_id, store_id \n', 'utf8');
+const writeProductReviews2 = fs.createWriteStream('./db/data/productReview2.csv');
+writeProductReviews2.write('id, text, ts, dt, star_rating, user_id, product_id, store_id \n', 'utf8');
 
-function writeTenMillionProductReviews(writer, encoding, callback) {
+function writeTenMillionProductReviews2(writer, encoding, callback) {
   let i = 10000000;
-  let id = 0;
+  let id = 10000000;
   function write() {
     let ok = true;
     do {
@@ -135,8 +135,8 @@ function writeTenMillionProductReviews(writer, encoding, callback) {
   write();
 }
 
-writeTenMillionProductReviews(writeProductReviews, 'utf-8', () => {
-  writeProductReviews.end();
+writeTenMillionProductReviews2(writeProductReviews2, 'utf-8', () => {
+  writeProductReviews2.end();
 });
 
 // write storeReview csv

@@ -28,10 +28,9 @@ CREATE TABLE store_products (
 );
 
 DROP TABLE IF EXISTS `product_reviews`;
-CREATE TABLE product_reviews (
+CREATE TABLE product_reviews3 (
     id int NOT NULL AUTO_INCREMENT UNIQUE,
   text varchar(200) NOT NULL,
-    --ts TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     dt DATETIME DEFAULT CURRENT_TIMESTAMP,
     star_rating tinyint,
     user_id int NOT NULL,
@@ -58,20 +57,16 @@ DROP VIEW IF EXISTS `product_reviews_and_users_and_stores`
 CREATE VIEW product_reviews_and_users_and_stores AS
 SELECT 
   pr.id,
-  pr.ts,
   pr.dt,
   pr.star_rating,
   pr.user_id,
   pr.product_id,
-  pr.store_id,
   u.username,
-  u.avatar,
-  s.name
-FROM product_reviews AS pr
+  u.avatar
+FROM product_reviews3 AS pr
 INNER JOIN users AS u
-ON pr.user_id = u.id
-INNER JOIN stores AS s 
-ON pr.store_id = s.id;
+ON pr.user_id = u.id;
+
 
 -- create a table based on three tables for product reviews
 DROP VIEW IF EXISTS `store_reviews_and_users_and_stores`
@@ -89,6 +84,12 @@ INNER JOIN users AS u
 ON sr.user_id = u.id
 INNER JOIN stores AS s 
 ON sr.store_id = s.id;
+
+--create new store reivews table
+SELECT 
+  sp.id
+FROM store_products
+WHERE 
 
 CREATE INDEX product_reviews_index ON product_reviews (product_id);
 

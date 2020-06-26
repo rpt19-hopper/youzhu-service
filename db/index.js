@@ -41,6 +41,7 @@ const getStoreId = function (productId, callback) {
     if (error) {
       callback(null, error);
     } else {
+      console.log(results[0].store_id);
       callback(results[0].store_id, null);
     }
   });
