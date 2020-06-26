@@ -46,10 +46,10 @@ const ProductReviews = (props) => {
   };
 
   const getProductImage = (productId) => {
-    // axios.get(`http://ec2-50-18-28-6.us-west-1.compute.amazonaws.com:8000/mainImage/${productId}`)
-    //   .then((res) => {
-    setMainImage('https://picsum.photos/200/300');
-    //});
+    axios.get(`http://54.67.27.49:4567/mainImage/${productId}`)
+      .then((res) => {
+        setMainImage('https://picsum.photos/200/300');
+      });
   };
 
   const getProductInfo = (productId) => {

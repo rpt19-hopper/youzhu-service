@@ -19,18 +19,25 @@ CREATE TABLE stores (
 	PRIMARY KEY (id)
 );
 
+DROP TABLE IF EXISTS `store_products`;
+CREATE TABLE store_products (
+	id int NOT NULL AUTO_INCREMENT,
+  store_id int NOT NULL,
+    FOREIGN KEY (store_id) REFERENCES stores(id),
+	PRIMARY KEY (id)
+);
+
 DROP TABLE IF EXISTS `product_reviews`;
 CREATE TABLE product_reviews (
     id int NOT NULL AUTO_INCREMENT UNIQUE,
   text varchar(200) NOT NULL,
-    ts TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    --ts TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     dt DATETIME DEFAULT CURRENT_TIMESTAMP,
     star_rating tinyint,
     user_id int NOT NULL,
   FOREIGN KEY (user_id) REFERENCES users(id),
     product_id int NOT NULL,
-    store_id int NOT NULL,
-  FOREIGN KEY (store_id) REFERENCES stores(id),
+  FOREIGN KEY (product_id) REFERENCES store_products(id),
     PRIMARY KEY (id)
 );
 
