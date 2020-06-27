@@ -36,6 +36,16 @@ const getStoreReviewsAverage = function (storeId, callback) {
   });
 };
 
+const getStoreId = function (productId, callback) {
+  connection.query(`SELECT store_id FROM store_products WHERE id=${productId}`, (error, results) => {
+    if (error) {
+      callback(null, error);
+    } else {
+      callback(results[0].store_id, null);
+    }
+  });
+};
+
 const getStoreReviews = function (storeId, callback) {
   connection.query(`SELECT * FROM store_reviews_and_users_and_stores WHERE store_id=${storeId}`, (error, results) => {
     if (error) {
@@ -117,5 +127,6 @@ module.exports = {
   addOneStoreReview,
   editOneStoreReview,
   deleteOneStoreReview,
+  getStoreId,
   connection,
 };

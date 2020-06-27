@@ -19,18 +19,24 @@ CREATE TABLE stores (
 	PRIMARY KEY (id)
 );
 
+DROP TABLE IF EXISTS `store_products`;
+CREATE TABLE store_products (
+	id int NOT NULL AUTO_INCREMENT,
+  store_id int NOT NULL,
+    FOREIGN KEY (store_id) REFERENCES stores(id),
+	PRIMARY KEY (id)
+);
+
 DROP TABLE IF EXISTS `product_reviews`;
-CREATE TABLE product_reviews (
+CREATE TABLE product_reviews3 (
     id int NOT NULL AUTO_INCREMENT UNIQUE,
   text varchar(200) NOT NULL,
-    ts TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     dt DATETIME DEFAULT CURRENT_TIMESTAMP,
     star_rating tinyint,
     user_id int NOT NULL,
   FOREIGN KEY (user_id) REFERENCES users(id),
     product_id int NOT NULL,
-    store_id int NOT NULL,
-  FOREIGN KEY (store_id) REFERENCES stores(id),
+  FOREIGN KEY (product_id) REFERENCES store_products(id),
     PRIMARY KEY (id)
 );
 
@@ -47,33 +53,31 @@ CREATE TABLE store_reviews (
 );
 
 -- create a TABLE based on three tables for store reviews
-DROP VIEW IF EXISTS `product_reviews_and_users_and_stores`
+DROP VIEW IF EXISTS `product_reviews_and_users_and_stores`;
 CREATE VIEW product_reviews_and_users_and_stores AS
 SELECT 
   pr.id,
-  pr.ts,
   pr.dt,
   pr.star_rating,
   pr.user_id,
   pr.product_id,
-  pr.store_id,
+  pr.text,
   u.username,
-  u.avatar,
-  s.name
-FROM product_reviews AS pr
+  u.avatar
+FROM product_reviews3 AS pr
 INNER JOIN users AS u
-ON pr.user_id = u.id
-INNER JOIN stores AS s 
-ON pr.store_id = s.id;
+ON pr.user_id = u.id;
+
 
 -- create a table based on three tables for product reviews
-DROP VIEW IF EXISTS `store_reviews_and_users_and_stores`
+DROP VIEW IF EXISTS `store_reviews_and_users_and_stores`;
 CREATE VIEW store_reviews_and_users_and_stores AS 
 SELECT 
   sr.id,
   sr.star_rating,
   sr.user_id,
   sr.store_id,
+  sr.text,
   u.username,
   u.avatar,
   s.name
@@ -82,6 +86,7 @@ INNER JOIN users AS u
 ON sr.user_id = u.id
 INNER JOIN stores AS s 
 ON sr.store_id = s.id;
+
 
 CREATE INDEX product_reviews_index ON product_reviews (product_id);
 

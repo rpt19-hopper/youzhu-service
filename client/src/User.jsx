@@ -4,7 +4,7 @@ import React, { useLayoutEffect, useState } from 'react';
 import Axios from 'axios';
 
 const User = (props) => {
-  const server = 'http://ec2-18-223-151-174.us-east-2.compute.amazonaws.com:1234';
+  const server = 'http://18.223.151.174:1234';
   const [users, setUsers] = useState([]);
 
   // const getUser = (userId) => {
@@ -25,7 +25,7 @@ const User = (props) => {
     <div>
       {users.map((val) => (
         <div key={val.id} className="user wt-display-flex-xs wt-align-items-center wt-mb-xs-1">
-          <img alt={val.username} src={`https://i.picsum.photos/id/${Math.floor((Math.random() * 100) + 1)}/75/75.jpg`} />
+          <img alt={val.username} src={`https://picsum.photos/id/${Math.floor((Math.random() * 100) + 1)}/75/75.jpg`} />
           <div key={val.id} className="username wt-text-gray">{val.username}</div>
         </div>
       ))}

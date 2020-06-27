@@ -18,11 +18,12 @@ class App extends React.Component {
   componentWillMount() {
     const productId = window.location.pathname.split('/')[2];
     this.setState({ productId });
-    this.setState({ storeId: '19779' });
+    this.setState({ storeId: productId });
   }
 
   render() {
-    const { productId, storeId } = this.state;
+    const {productId} = this.state;
+    const storeId = this.state.productId;
     return <div className="container"><ProductReviews productId={productId} storeId={storeId} /></div>;
   }
 }

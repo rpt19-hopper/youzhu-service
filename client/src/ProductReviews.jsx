@@ -19,7 +19,7 @@ import './css/ProductReviews.scss';
 
 
 const ProductReviews = (props) => {
-  const server = 'http://ec2-18-223-151-174.us-east-2.compute.amazonaws.com:1234';
+  const server = 'http://18.223.151.174:1234';
   const [storeReviews, setStoreReviews] = useState([]);
   const [productReviews, setProductReviews] = useState([]);
   const [reviews, setReviews] = useState([]);
@@ -46,10 +46,10 @@ const ProductReviews = (props) => {
   };
 
   const getProductImage = (productId) => {
-    // axios.get(`http://ec2-50-18-28-6.us-west-1.compute.amazonaws.com:8000/mainImage/${productId}`)
-    //   .then((res) => {
-    setMainImage('https://picsum.photos/200/300');
-    //});
+    axios.get(`http://54.67.27.49:4567/mainImage/${productId}`)
+      .then((res) => {
+        setMainImage('https://picsum.photos/200/300');
+      });
   };
 
   const getProductInfo = (productId) => {
